@@ -84,9 +84,15 @@ fs.readFile(storedTdAddress, (err, tdData) => {
                 ajv.addMetaSchema(draft);
                 ajv.addSchema(schema, 'td');
                 ajv.addKeyword('$hook', {
-                    validate: function (schema, data) {
-                        console.log("\n!!!! HOOK: "+data);
-                        return true;
+                    compile: function (a, p) {
+                        return function (d) { 
+                            console.log("HOOK: {\n"
+                                        +"\tparent: "+JSON.stringify(p)+"\n"
+                                        +"\targ: "+JSON.stringify(a)+"\n"
+                                        +"\tdata: "+JSON.stringify(d)+"\n"
+                                        +"}");
+                            return true;
+                        }
                     },
                     errors: false
                 });
