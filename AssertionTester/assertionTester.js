@@ -55,11 +55,14 @@ fs.readFile(storedTdAddress, (err, tdData) => {
 
         // Iterating through assertions
 
-        var assertions = fs.readdirSync("./AssertionTester/Assertions/");
+        //var assertions = fs.readdirSync("./AssertionTester/Assertions/");
+        //var assertions = ["./WebContent/td-schema.json"];
+        var assertions = ["./WebContent/td-schema-Hooks.json"];
 
         assertions.forEach((curAssertion, index) => {
             
-            var schemaLocation = "./AssertionTester/Assertions/" + curAssertion;
+            //var schemaLocation = "./AssertionTester/Assertions/" + curAssertion;
+            var schemaLocation = curAssertion;
 
             fs.readFile(schemaLocation, (err, schemaData) => {
 
@@ -74,12 +77,19 @@ fs.readFile(storedTdAddress, (err, tdData) => {
                 // Validation starts here
 
                 const avj_options = { 
-                    "$comment": function (v) {console.log("\n!!!! COMMENT",v)},
+                    "$comment": function (v) {console.log("\n!!!! COMMENT: "+v)},
                     "allErrors": true
                 };
                 var ajv = new Ajv(avj_options);
                 ajv.addMetaSchema(draft);
                 ajv.addSchema(schema, 'td');
+                ajv.addKeyword('$hook', {
+                    validate: function (schema, data) {
+                        console.log("\n!!!! HOOK: "+data);
+                        return true;
+                    },
+                    errors: false
+                });
 
                 var valid = ajv.validate('td', tdJson);
 

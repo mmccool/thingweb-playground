@@ -5,72 +5,89 @@
     "type": "object",
     "properties": {
         "base": {
+            "$hook" : "base",
             "$ref": "#/definitions/url"
         },
         "@type": {
+            "$hook" : "@type",
             "$ref": "#/definitions/type_declaration"
         },
         "@context": {
+            "$hook" : "@context",
             "$ref": "#/definitions/context"
         },
         "name": {
+            "$hook" : "name",
             "type": "string"
         },
         "id": {
+            "$hook" : "id",
             "type": "string"
         },
         "description": {
+            "$hook" : "description",
             "type": "string"
         },
         "descriptions": {
+            "$hook" : "descriptions",
             "$ref": "#/definitions/descriptions"
         },
         "properties": {
+            "$hook" : "properties",
             "type": "object",
             "additionalProperties": {
                 "$ref": "#/definitions/property_element"
             }
         },
         "actions": {
+            "$hook" : "actions",
             "type": "object",
             "additionalProperties": {
                 "$ref": "#/definitions/action_element"
             }
         },
         "events": {
+            "$hook" : "events",
             "type": "object",
             "additionalProperties": {
                 "$ref": "#/definitions/event_element"
             }
         },
         "links": {
+            "$hook" : "links",
             "type": "array",
             "items": {
                 "$ref": "#/definitions/link_element"
             }
         },
         "support": {
+            "$hook" : "support",
             "$ref": "#/definitions/url"
         },
         "securityDefinitions": {
+            "$hook" : "securityDefinitions",
             "type": "object",
             "additionalProperties": {
                 "$ref": "#/definitions/securityScheme"
             }
         },
         "security": {
+            "$hook" : "security",
             "type": "array",
             "items": {
                 "type": "string"
             }
         },
         "created": {
+            "$hook" : "created",
             "type": "string"
         },
         "lastModified": {
+            "$hook" : "lastModified",
             "type": "string"
         },
         "version": {
+            "$hook" : "version",
             "type": "object",
             "properties": {
                 "instance": {
@@ -90,6 +107,7 @@
     "additionalProperties": true,
     "definitions": {
         "context": {
+            "$hook" : "in:context",
             "oneOf": [{
                     "type": "array",
                     "items": {
@@ -117,6 +135,7 @@
             ]
         },
         "type_declaration": {
+            "$hook" : "in:type_declaration",
             "oneOf": [{
                     "type": "string"
                 },
@@ -129,12 +148,15 @@
             ]
         },
         "form_element": {
+            "$hook" : "in:form_element",
             "type": "object",
             "properties": {
                 "href": {
+                    "$hook" : "href",
                     "$ref": "#/definitions/url"
                 },
                 "op": {
+                    "$hook" : "op",
                     "oneOf": [{
                             "type": "string",
                             "enum": [
@@ -163,27 +185,32 @@
                     ]
                 },
                 "contentType": {
+                    "$hook" : "contentType",
                     "type": "string"
                 },
                 "security": {
+                    "$hook" : "security",
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
                 "scopes": {
+                    "$hook" : "scopes",
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
                 "subProtocol": {
+                    "$hook" : "subProtocol",
                     "type": "string",
                     "enum": [
                         "longpoll"
                     ]
                 },
                 "response": {
+                    "$hook" : "response",
                     "type": "object",
                     "properties": {
                         "contentType": {
@@ -199,54 +226,67 @@
             "additionalProperties": true
         },
         "property_element": {
+            "$hook" : "in:property_element",
             "type": "object",
             "properties": {
                 "description": {
+                    "$hook" : "description",
                     "type": "string"
                 },
                 "descriptions": {
+                    "$hook" : "descriptions",
                     "$ref": "#/definitions/descriptions"
                 },
                 "title": {
+                    "$hook" : "title",
                     "type": "string"
                 },
                 "titles": {
+                    "$hook" : "titles",
                     "$ref": "#/definitions/titles"
                 },
                 "uriVariables": {
+                    "$hook" : "uriVariables",
                     "$ref": "#/definitions/dataSchema"
                 },
                 "@type": {
+                    "$hook" : "@type",
                     "$ref": "#/definitions/type_declaration"
                 },
                 "observable": {
+                    "$hook" : "observable",
                     "type": "boolean"
                 },
                 "forms": {
+                    "$hook" : "forms",
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/form_element"
                     }
                 },
                 "scopes": {
+                    "$hook" : "scopes",
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
                 "security": {
+                    "$hook" : "security",
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
                 "enum": {
+                    "$hook" : "enum",
                     "type": "array",
                     "minItems": 1,
                     "uniqueItems": true
                 },
                 "const": {},
                 "type": {
+                    "$hook" : "type",
                     "type": "string",
                     "enum": [
                         "boolean",
@@ -259,15 +299,19 @@
                     ]
                 },
                 "writeOnly": {
+                    "$hook" : "writeOnly",
                     "type": "boolean"
                 },
                 "readOnly": {
+                    "$hook" : "readOnly",
                     "type": "boolean"
                 },
                 "oneOf": {
+                    "$hook" : "oneOf",
                     "$ref": "#/definitions/dataSchema"
                 },
                 "unit": {
+                    "$hook" : "unit",
                     "$ref": "#/definitions/dataSchema"
                 }
             },
@@ -277,51 +321,65 @@
             "additionalProperties": true
         },
         "action_element": {
+            "$hook" : "in:action_element",
             "type": "object",
             "properties": {
                 "description": {
+                    "$hook" : "description",
                     "type": "string"
                 },
                 "descriptions": {
+                    "$hook" : "descriptions",
                     "$ref": "#/definitions/descriptions"
                 },
                 "title": {
+                    "$hook" : "title",
                     "type": "string"
                 },
                 "titles": {
+                    "$hook" : "titles",
                     "$ref": "#/definitions/titles"
                 },
                 "uriVariables": {
+                    "$hook" : "uriVariables",
                     "$ref": "#/definitions/dataSchema"
                 },
                 "@type": {
+                    "$hook" : "@type",
                     "$ref": "#/definitions/type_declaration"
                 },
                 "forms": {
+                    "$hook" : "forms",
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/form_element"
                     }
                 },
                 "input": {
+                    "$hook" : "input",
                     "$ref": "#/definitions/dataSchema"
                 },
                 "output": {
+                    "$hook" : "output",
                     "$ref": "#/definitions/dataSchema"
                 },
                 "safe": {
+                    "$hook" : "safe",
                     "type": "boolean"
                 },
                 "idempotent": {
+                    "$hook" : "idempotent",
                     "type": "boolean"
                 },
                 "scopes": {
+                    "$hook" : "scopes",
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
                 "security": {
+                    "$hook" : "security",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -334,60 +392,76 @@
             "additionalProperties": true
         },
         "event_element": {
+            "$hook" : "in:event_element",
             "type": "object",
             "properties": {
                 "description": {
+                    "$hook" : "description",
                     "type": "string"
                 },
                 "descriptions": {
+                    "$hook" : "descriptions",
                     "$ref": "#/definitions/descriptions"
                 },
+                "title": {
+                    "$hook" : "title",
+                    "type": "string"
+                },
                 "titles": {
+                    "$hook" : "titles",
                     "$ref": "#/definitions/titles"
                 },
                 "uriVariables": {
+                    "$hook" : "uriVariables",
                     "$ref": "#/definitions/dataSchema"
                 },
-                "title": {
-                    "type": "string"
-                },
                 "@type": {
+                    "$hook" : "@type",
                     "$ref": "#/definitions/type_declaration"
                 },
                 "forms": {
+                    "$hook" : "forms",
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/form_element"
                     }
                 },
                 "scopes": {
+                    "$hook" : "scopes",
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
                 "security": {
+                    "$hook" : "security",
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
                 "subscription": {
+                    "$hook" : "subscription",
                     "$ref": "#/definitions/dataSchema"
                 },
                 "data": {
+                    "$hook" : "data",
                     "$ref": "#/definitions/dataSchema"
                 },
                 "cancellation": {
+                    "$hook" : "cancellation",
                     "$ref": "#/definitions/dataSchema"
                 },
                 "type": {
+                    "$hook" : "type",
                     "not": {}
                 },
                 "enum": {
+                    "$hook" : "enum",
                     "not": {}
                 },
                 "const": {
+                    "$hook" : "const",
                     "not": {}
                 }
             },
@@ -397,21 +471,34 @@
             "additionalProperties": true
         },
         "dataSchema": {
+            "$hook" : "in:dataSchema",
             "type": "object",
             "properties": {
                 "description": {
+                    "$hook" : "description",
                     "type": "string"
+                },
+                "descriptions": {
+                    "$hook" : "descriptions",
+                    "$ref": "#/definitions/descriptions"
                 },
                 "title": {
+                    "$hook" : "title",
                     "type": "string"
                 },
+                "titles": {
+                    "$hook" : "titles",
+                    "$ref": "#/definitions/titles"
+                },
                 "enum": {
+                    "$hook" : "enum",
                     "type": "array",
                     "minItems": 1,
                     "uniqueItems": true
                 },
                 "const": {},
                 "type": {
+                    "$hook" : "type",
                     "type": "string",
                     "enum": [
                         "boolean",
@@ -423,39 +510,42 @@
                         "null"
                     ]
                 },
-                "descriptions": {
-                    "$ref": "#/definitions/descriptions"
-                },
-                "titles": {
-                    "$ref": "#/definitions/titles"
-                },
                 "writeOnly": {
+                    "$hook" : "writeOnly",
                     "type": "boolean"
                 },
                 "readOnly": {
+                    "$hook" : "readOnly",
                     "type": "boolean"
                 },
                 "oneOf": {
+                    "$hook" : "oneOf",
                     "$ref": "#/definitions/dataSchema"
                 },
                 "unit": {
+                    "$hook" : "unit",
                     "$ref": "#/definitions/dataSchema"
                 }
             }
         },
         "link_element": {
+            "$hook" : "in:link_element",
             "type": "object",
             "properties": {
                 "anchor": {
+                    "$hook" : "anchor",
                     "$ref": "#/definitions/url"
                 },
                 "href": {
+                    "$hook" : "href",
                     "$ref": "#/definitions/url"
                 },
                 "rel": {
+                    "$hook" : "rel",
                     "type": "string"
                 },
                 "type": {
+                    "$hook" : "type",
                     "type": "string"
                 }
             },
@@ -465,16 +555,21 @@
             "additionalProperties": true
         },
         "securityScheme": {
+            "$hook" : "in:securityScheme",
             "oneOf": [{
+                    "$hook" : "in:securityScheme:nosec",
                     "type": "object",
                     "properties": {
                         "description": {
+                            "$hook" : "description",
                             "type": "string"
                         },
                         "proxy": {
+                            "$hook" : "proxy",
                             "$ref": "#/definitions/url"
                         },
                         "scheme": {
+                            "$hook" : "scheme",
                             "type": "string",
                             "enum": [
                                 "nosec"
@@ -486,24 +581,30 @@
                     ]
                 },
                 {
+                    "$hook" : "in:securityScheme:basic",
                     "type": "object",
                     "properties": {
                         "description": {
+                            "$hook" : "description",
                             "type": "string"
                         },
                         "proxy": {
+                            "$hook" : "proxy",
                             "$ref": "#/definitions/url"
                         },
                         "scheme": {
+                            "$hook" : "scheme",
                             "type": "string",
                             "enum": [
                                 "basic"
                             ]
                         },
                         "in": {
+                            "$hook" : "in",
                             "type": "string"
                         },
                         "name": {
+                            "$hook" : "name",
                             "type": "string"
                         }
                     },
@@ -512,21 +613,26 @@
                     ]
                 },
                 {
+                    "$hook" : "in:securityScheme:cert",
                     "type": "object",
                     "properties": {
                         "description": {
+                            "$hook" : "description",
                             "type": "string"
                         },
                         "proxy": {
+                            "$hook" : "proxy",
                             "$ref": "#/definitions/url"
                         },
                         "scheme": {
+                            "$hook" : "scheme",
                             "type": "string",
                             "enum": [
                                 "cert"
                             ]
                         },
                         "identity": {
+                            "$hook" : "identity",
                             "type": "string"
                         }
                     },
@@ -535,27 +641,34 @@
                     ]
                 },
                 {
+                    "$hook" : "in:securityScheme:digest",
                     "type": "object",
                     "properties": {
                         "description": {
+                            "$hook" : "description",
                             "type": "string"
                         },
                         "proxy": {
+                            "$hook" : "proxy",
                             "$ref": "#/definitions/url"
                         },
                         "scheme": {
+                            "$hook" : "scheme",
                             "type": "string",
                             "enum": [
                                 "digest"
                             ]
                         },
                         "qop": {
+                            "$hook" : "qop",
                             "type": "string"
                         },
                         "in": {
+                            "$hook" : "in",
                             "type": "string"
                         },
                         "name": {
+                            "$hook" : "name",
                             "type": "string"
                         }
                     },
@@ -564,33 +677,42 @@
                     ]
                 },
                 {
+                    "$hook" : "in:securityScheme:bearer",
                     "type": "object",
                     "properties": {
                         "description": {
+                            "$hook" : "description",
                             "type": "string"
                         },
                         "proxy": {
+                            "$hook" : "proxy",
                             "$ref": "#/definitions/url"
                         },
                         "scheme": {
+                            "$hook" : "scheme",
                             "type": "string",
                             "enum": [
                                 "bearer"
                             ]
                         },
                         "authorization": {
+                            "$hook" : "authorization",
                             "$ref": "#/definitions/url"
                         },
                         "alg": {
+                            "$hook" : "alg",
                             "type": "string"
                         },
                         "format": {
+                            "$hook" : "format",
                             "type": "string"
                         },
                         "in": {
+                            "$hook" : "in",
                             "type": "string"
                         },
                         "name": {
+                            "$hook" : "name",
                             "type": "string"
                         }
                     },
@@ -599,21 +721,26 @@
                     ]
                 },
                 {
+                    "$hook" : "in:securityScheme:psk",
                     "type": "object",
                     "properties": {
                         "description": {
+                            "$hook" : "description",
                             "type": "string"
                         },
                         "proxy": {
+                            "$hook" : "proxy",
                             "$ref": "#/definitions/url"
                         },
                         "scheme": {
+                            "$hook" : "scheme",
                             "type": "string",
                             "enum": [
                                 "psk"
                             ]
                         },
                         "identity": {
+                            "$hook" : "identity",
                             "type": "string"
                         }
                     },
@@ -622,21 +749,26 @@
                     ]
                 },
                 {
+                    "$hook" : "in:securityScheme:public",
                     "type": "object",
                     "properties": {
                         "description": {
+                            "$hook" : "description",
                             "type": "string"
                         },
                         "proxy": {
+                            "$hook" : "proxy",
                             "$ref": "#/definitions/url"
                         },
                         "scheme": {
+                            "$hook" : "scheme",
                             "type": "string",
                             "enum": [
                                 "public"
                             ]
                         },
                         "identity": {
+                            "$hook" : "identity",
                             "type": "string"
                         }
                     },
@@ -645,36 +777,45 @@
                     ]
                 },
                 {
+                    "$hook" : "in:securityScheme:oauth2",
                     "type": "object",
                     "properties": {
                         "description": {
+                            "$hook" : "description",
                             "type": "string"
                         },
                         "proxy": {
+                            "$hook" : "proxy",
                             "$ref": "#/definitions/url"
                         },
                         "scheme": {
+                            "$hook" : "scheme",
                             "type": "string",
                             "enum": [
                                 "oath2"
                             ]
                         },
                         "authorization": {
+                            "$hook" : "authorization",
                             "$ref": "#/definitions/url"
                         },
                         "token": {
+                            "$hook" : "token",
                             "$ref": "#/definitions/url"
                         },
                         "refresh": {
+                            "$hook" : "refresh",
                             "$ref": "#/definitions/url"
                         },
                         "scopes": {
+                            "$hook" : "scopes",
                             "type": "array",
                             "items": {
                                 "type": "string"
                             }
                         },
                         "flow": {
+                            "$hook" : "flow",
                             "type": "string"
                         }
                     },
@@ -683,24 +824,30 @@
                     ]
                 },
                 {
+                    "$hook" : "in:securityScheme:apikey",
                     "type": "object",
                     "properties": {
                         "description": {
+                            "$hook" : "description",
                             "type": "string"
                         },
                         "proxy": {
+                            "$hook" : "proxy",
                             "$ref": "#/definitions/url"
                         },
                         "scheme": {
+                            "$hook" : "scheme",
                             "type": "string",
                             "enum": [
                                 "apikey"
                             ]
                         },
                         "in": {
+                            "$hook" : "in",
                             "type": "string"
                         },
                         "name": {
+                            "$hook" : "name",
                             "type": "string"
                         }
                     },
@@ -709,33 +856,42 @@
                     ]
                 },
                 {
+                    "$hook" : "in:securityScheme:pop",
                     "type": "object",
                     "properties": {
                         "description": {
+                            "$hook" : "description",
                             "type": "string"
                         },
                         "proxy": {
+                            "$hook" : "proxy",
                             "$ref": "#/definitions/url"
                         },
                         "scheme": {
+                            "$hook" : "scheme",
                             "type": "string",
                             "enum": [
                                 "pop"
                             ]
                         },
                         "authorization": {
+                            "$hook" : "authorization",
                             "$ref": "#/definitions/url"
                         },
                         "format": {
+                            "$hook" : "format",
                             "type": "string"
                         },
                         "alg": {
+                            "$hook" : "alg",
                             "type": "string"
                         },
                         "in": {
+                            "$hook" : "in",
                             "type": "string"
                         },
                         "name": {
+                            "$hook" : "name",
                             "type": "string"
                         }
                     },
@@ -746,14 +902,17 @@
             ]
         },
         "url": {
+            "$hook" : "url",
             "type": "string",
             "format": "uri",
             "pattern": "(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(([^#]*))?(#(.*))?"
         },
         "descriptions": {
+            "$hook" : "description",
             "type": "object"
         },
         "titles": {
+            "$hook" : "titles",
             "type": "object"
         }
     }
